@@ -38,3 +38,4 @@ D:\Application Live\Mumbai\Restaurant\Resto_WebApi\Resto_WebApi\bin\System.Web.H
 D:\Application Live\Mumbai\Restaurant\Resto_WebApi\Resto_WebApi\bin\System.Web.Http.WebHost.xml
 D:\Application Live\Mumbai\Restaurant\Resto_WebApi\Resto_WebApi\obj\Debug\CMS_WebApi.dll
 D:\Application Live\Mumbai\Restaurant\Resto_WebApi\Resto_WebApi\obj\Debug\CMS_WebApi.pdb
+D:\Application Live\Mumbai\Restaurant\Resto_WebApi\Resto_WebApi\obj\Debug\Resto_WebApi.csprojResolveAssemblyReference.cache

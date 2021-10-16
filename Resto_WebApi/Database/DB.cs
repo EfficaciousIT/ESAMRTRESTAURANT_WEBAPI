@@ -101,6 +101,36 @@ namespace Resto_WebApi.Database
             }
         }
 
+        // To show table status
+        public DataSet TableStatusDetails(string Command, TableStatus TableStatus)
+        {
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                try
+                {
+                    String query = "usp_Mob_Table";
+                    SqlCommand com = new SqlCommand(query, con);
+                    con.Open();
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@Command", Command);
+                    com.Parameters.AddWithValue("@Res_Id", TableStatus.Res_Id);
+                    SqlDataAdapter da = new SqlDataAdapter(com);
+                    DataSet ds = new DataSet();
+                    da.Fill(ds, "TableStatusDetails");
+                    return (ds);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    con.Close();
+                    con.Dispose();
+                }
+            }
+        }
+
     }
 
 }
