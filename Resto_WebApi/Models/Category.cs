@@ -9,7 +9,7 @@ namespace Resto_WebApi.Models
     {
         public string Cat_Id { get; set; }
         public string Cat_Name { get; set; }
-        public int Url_Category { get; set; }
+        public string Url_Category { get; set; }
         public int Res_Id { get; set; }
     }
 }

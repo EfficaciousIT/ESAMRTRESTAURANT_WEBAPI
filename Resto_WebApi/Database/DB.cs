@@ -70,6 +70,37 @@ namespace Resto_WebApi.Database
             }
         }
 
+        // To show food menus cateogory wise
+        public DataSet MenuDetails(string Command, Menu Menu)
+        {
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                try
+                {
+                    String query = "Menu_SP";
+                    SqlCommand com = new SqlCommand(query, con);
+                    con.Open();
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@Command", Command);
+                    com.Parameters.AddWithValue("@Cat_Id", Menu.Cat_Id);
+                    com.Parameters.AddWithValue("@Res_Id", Menu.Res_Id);
+                    SqlDataAdapter da = new SqlDataAdapter(com);
+                    DataSet ds = new DataSet();
+                    da.Fill(ds, "MenuDetails");
+                    return (ds);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    con.Close();
+                    con.Dispose();
+                }
+            }
+        }
+
     }
 
 }
