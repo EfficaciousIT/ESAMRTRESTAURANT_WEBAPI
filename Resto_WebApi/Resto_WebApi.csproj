@@ -121,7 +121,9 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\OrderDetailsController.cs" />
     <Compile Include="Controllers\TableStatusController.cs" />
+    <Compile Include="Controllers\TakeOrderController.cs" />
     <Compile Include="Database\DB.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -129,7 +131,9 @@
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Menu.cs" />
+    <Compile Include="Models\OrderDetails.cs" />
     <Compile Include="Models\TableStatus.cs" />
+    <Compile Include="Models\TakeOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

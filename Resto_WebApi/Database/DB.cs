@@ -131,6 +131,83 @@ namespace Resto_WebApi.Database
             }
         }
 
+        public DataSet TakeOrderDetails(string Command, TakeOrder takeOrder)
+        {
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                try
+                {
+                    String query = "usp_Mob_Order";
+                    SqlCommand com = new SqlCommand(query, con);
+                    con.Open();
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@Command", Command);
+                    com.Parameters.AddWithValue("@TableName", takeOrder.TableName);
+                    com.Parameters.AddWithValue("@RegisterId", takeOrder.RegisterId);
+                    com.Parameters.AddWithValue("@EmployeeId", takeOrder.EmployeeId);
+                    com.Parameters.AddWithValue("@DeviceId", takeOrder.DeviceId);
+                    com.Parameters.AddWithValue("@IsActive", takeOrder.IsActive);
+                    com.Parameters.AddWithValue("@intPersonCOunt", takeOrder.intPersonCOunt);
+                    com.Parameters.AddWithValue("@ResId", takeOrder.ResId);
+                    com.Parameters.AddWithValue("@vchSplitTableName", takeOrder.vchSplitTableName);
+                    com.Parameters.AddWithValue("@vchSplit_status", takeOrder.vchSplit_status);
+                    com.Parameters.AddWithValue("@Status", takeOrder.Status);
+                    SqlDataAdapter da = new SqlDataAdapter(com);
+                    DataSet ds = new DataSet();
+                    da.Fill(ds, "TakeOrderDetails");
+                    return (ds);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    con.Close();
+                    con.Dispose();
+                }
+            }
+        }
+
+        public DataSet OrderDetails(string Command, OrderDetails orderDetails)
+        {
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                try
+                {
+                    String query = "usp_Mob_OrderTrasaction";
+                    SqlCommand com = new SqlCommand(query, con);
+                    con.Open();
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@Command", Command);
+                    com.Parameters.AddWithValue("@OrderId", orderDetails.OrderId);
+                    com.Parameters.AddWithValue("@CategoryName", orderDetails.CategoryName);
+                    com.Parameters.AddWithValue("@MenuName", orderDetails.MenuName);
+                    com.Parameters.AddWithValue("@TableName", orderDetails.TableName);
+                    com.Parameters.AddWithValue("@RegisterId", orderDetails.RegisterId);
+                    com.Parameters.AddWithValue("@EmployeeId", orderDetails.EmployeeId);
+                    com.Parameters.AddWithValue("@Price", orderDetails.Price);
+                    com.Parameters.AddWithValue("@Qty", orderDetails.Qty);
+                    com.Parameters.AddWithValue("@vchFoodDescription", orderDetails.vchFoodDescription);
+                    com.Parameters.AddWithValue("@Kitchen_status", orderDetails.Kitchen_status);
+                    com.Parameters.AddWithValue("@status", orderDetails.status);
+                    SqlDataAdapter da = new SqlDataAdapter(com);
+                    DataSet ds = new DataSet();
+                    da.Fill(ds, "OrderDetails");
+                    return (ds);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    con.Close();
+                    con.Dispose();
+                }
+            }
+        }
+
     }
 
 }
