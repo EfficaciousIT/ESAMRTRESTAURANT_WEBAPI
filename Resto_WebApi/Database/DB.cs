@@ -237,6 +237,35 @@ namespace Resto_WebApi.Database
             }
         }
 
+        public DataSet GetKitchenOrder(string Command, TakeOrder takeOrder)
+        {
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                try
+                {
+                    String query = "usp_Mob_GetKitchenOrderList";
+                    SqlCommand com = new SqlCommand(query, con);
+                    con.Open();
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@Command", Command);
+                    com.Parameters.AddWithValue("@ResId", takeOrder.ResId);
+                    SqlDataAdapter da = new SqlDataAdapter(com);
+                    DataSet ds = new DataSet();
+                    da.Fill(ds, "GetKitchenOrderList");
+                    return (ds);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    con.Close();
+                    con.Dispose();
+                }
+            }
+        }
+
     }
 
 }
