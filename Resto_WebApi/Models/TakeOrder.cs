@@ -17,5 +17,9 @@ namespace Resto_WebApi.Models
         public string vchSplitTableName { get; set; }
         public string vchSplit_status { get; set; }
         public string Status { get; set; }
+
+        //for lastest order id
+        public int OrderId { get; set; }  
+
     }
 }

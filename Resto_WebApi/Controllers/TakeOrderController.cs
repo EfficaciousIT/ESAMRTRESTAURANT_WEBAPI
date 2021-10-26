@@ -17,7 +17,7 @@ namespace Resto_WebApi.Controllers
             try
             {
                 DataSet ds = record.TakeOrderDetails(command, takeOrder);
-                var message = Request.CreateResponse(HttpStatusCode.Created);
+                var message = Request.CreateResponse(HttpStatusCode.OK);
                 return message;
             }
             catch (Exception ex)
@@ -25,5 +25,14 @@ namespace Resto_WebApi.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex);
             }
         }
+
+        public DataSet Get(string Command, int ResId)
+        {
+            TakeOrder takeOrder = new TakeOrder();
+            takeOrder.ResId = ResId;
+            DataSet ds = record.GetOrderId(Command, takeOrder);
+            return ds;
+        }
+
     }
 }

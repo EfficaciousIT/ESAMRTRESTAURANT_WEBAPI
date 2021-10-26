@@ -17,7 +17,7 @@ namespace Resto_WebApi.Controllers
             try
             {
                 DataSet ds = record.OrderDetails(command, orderDetails);
-                var message = Request.CreateResponse(HttpStatusCode.Created);
+                var message = Request.CreateResponse(HttpStatusCode.OK);
                 return message;
             }
             catch (Exception ex)
